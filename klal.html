@@ -486,8 +486,81 @@
             color: var(--dark-gray);
         }
         
+        .newsletter-section {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+        
+        .newsletter-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .newsletter-text h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: var(--black);
+        }
+        
+        .newsletter-text p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .newsletter-form {
+            background-color: var(--light-gray);
+            padding: 40px;
+            border-radius: 0;
+        }
+        
+        .newsletter-form-manual {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .newsletter-form-manual input {
+            padding: 15px;
+            border: 1px solid var(--medium-gray);
+            font-family: 'Rubik', sans-serif;
+            font-size: 1rem;
+        }
+        
+        .newsletter-form-manual button {
+            background-color: var(--blue);
+            color: var(--white);
+            border: none;
+            padding: 15px;
+            font-family: 'Rubik', sans-serif;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .newsletter-form-manual button:hover {
+            background-color: var(--orange-yellow);
+        }
+        
+        .newsletter-form-manual h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--blue);
+        }
+        
+        .form-note {
+            font-size: 0.9rem;
+            color: var(--dark-gray);
+            opacity: 0.8;
+        }
+        
         @media (max-width: 992px) {
-            .hero-content, .featured-content, .footer-content {
+            .hero-content, .featured-content, .footer-content, .newsletter-content {
                 grid-template-columns: 1fr;
             }
             
@@ -742,6 +815,25 @@
                     <h3>Digital Literacy Curriculum for Jewish Educators</h3>
                     <p>A specialized curriculum designed for Jewish schools and educational programs.</p>
                     <a href="#" class="primary-button">Access Materials</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <div class="newsletter-text">
+                    <h2>Stay Updated</h2>
+                    <p>Subscribe to our Substack newsletter to receive the latest updates on digital security, resources, and events for Jewish communities.</p>
+                </div>
+                <div class="newsletter-form">
+                    <div class="newsletter-form-manual">
+                        <h3>Subscribe to Our Newsletter</h3>
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit">Subscribe</button>
+                        <p class="form-note">Powered by Substack. You can unsubscribe at any time.</p>
+                    </div>
                 </div>
             </div>
         </div>
