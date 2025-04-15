@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - K'lal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue: #0062d4;
+            --orange-yellow: #e88f01;
+            --light-blue: #e1f0ff;
+            --light-gray: #f7f7f7;
+            --medium-gray: #e0e0e0;
+            --dark-gray: #333333;
+            --white: #ffffff;
+            --black: #000000;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Rubik', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--white);
+            border-bottom: 1px solid var(--medium-gray);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo svg {
+            height: 60px;
+            width: auto;
+        }
+        
+        .logo-text {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-left: 15px;
+            color: var(--black);
+        }
+        
+        .menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .menu li {
+            margin-left: 40px;
+        }
+        
+        .menu a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s;
+        }
+        
+        .menu a:hover {
+            color: var(--blue);
+        }
+        
+        .cta-button {
+            background-color: var(--blue);
+            color: white !important;
+            padding: 10px 20px;
+            border-radius: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--orange-yellow);
+        }
+        
+        .page-header {
+            padding: 150px 0 60px;
+            background-color: var(--light-blue);
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--black);
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--dark-gray);
+        }
+        
+        .mission-section {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .mission-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .mission-text h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: var(--black);
+        }
+        
+        .mission-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .mission-image {
+            position: relative;
+        }
+        
+        .mission-image svg {
+            width: 100%;
+            height: auto;
+        }
+        
+        .values-section {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            color: var(--black);
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .value-card {
+            background-color: var(--white);
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .value-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 20px 0;
+            color: var(--black);
+        }
+        
+        .value-card p {
+            color: var(--dark-gray);
+        }
+        
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .value-icon svg {
+            width: 60px;
+            height: 60px;
+        }
+        
+        .team-section {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 60px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .team-member {
+            text-align: center;
+        }
+        
+        .team-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background-color: white;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .team-photo img {
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+        }
+        
+        .team-info h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--black);
+        }
+        
+        .team-role {
+            color: var(--blue);
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        
+        .team-bio {
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .business-case-section {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+        }
+        
+        .business-case-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .business-case-text h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: var(--black);
+        }
+        
+        .business-case-text p {
+            margin-bottom: 20px;
+        }
+        
+        .business-case-points {
+            list-style-position: inside;
+            margin-bottom: 30px;
+        }
+        
+        .business-case-points li {
+            margin-bottom: 10px;
+        }
+        
+        .cta-section {
+            padding: 80px 0;
+            background-color: var(--blue);
+            color: var(--white);
+        }
+        
+        .cta-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .cta-content h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .cta-content p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        
+        .cta-button-white {
+            display: inline-block;
+            background-color: var(--white);
+            color: var(--blue);
+            padding: 12px 30px;
+            text-decoration: none;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+        
+        .cta-button-white:hover {
+            background-color: var(--orange-yellow);
+            color: var(--white);
+        }
+        
+        footer {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 80px 0 40px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-info h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .footer-info p {
+            margin-bottom: 20px;
+            color: var(--medium-gray);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--medium-gray);
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-link:hover {
+            background-color: var(--blue);
+            border-color: var(--blue);
+        }
+        
+        .footer-nav h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: var(--medium-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--blue);
+        }
+        
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            text-align: center;
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+        }
+        
+        .mobile-menu-button {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--dark-gray);
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 50px auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--blue);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--orange-yellow);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .timeline-left {
+            left: 0;
+            text-align: right;
+        }
+        
+        .timeline-right {
+            left: 50%;
+            text-align: left;
+        }
+        
+        .timeline-left::after {
+            right: -10px;
+        }
+        
+        .timeline-right::after {
+            left: -10px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: var(--white);
+            position: relative;
+            border-radius: 0;
+        }
+        
+        .timeline-date {
+            color: var(--blue);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        @media (max-width: 992px) {
+            .mission-content, .business-case-content, .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-button {
+                display: block;
+            }
+            
+            .menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                flex-direction: column;
+            }
+            
+            .menu.active {
+                display: flex;
+            }
+            
+            .menu li {
+                margin: 15px 0;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-left, .timeline-right {
+                left: 0;
+                text-align: left;
+            }
+            
+            .timeline-left::after, .timeline-right::after {
+                left: 21px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <svg width="60" height="60" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M500 100 L300 500 L100 800 L400 650 L500 900 L600 650 L900 800 L700 500 L500 100 Z" fill="#0062d4" />
+                        <path d="M500 100 L700 500 L900 800 L600 650 L500 900 L400 650 L100 800 L300 500 L500 100 Z" fill="#e88f01" />
+                    </svg>
+                    <span class="logo-text">K'lal</span>
+                </div>
+                <button class="mobile-menu-button">☰</button>
+                <ul class="menu">
+                    <li><a href="/index.html">HOME</a></li>
+                    <li><a href="/about.html" class="active">ABOUT</a></li>
+                    <li><a href="#services">SERVICES</a></li>
+                    <li><a href="#resources">RESOURCES</a></li>
+                    <li><a href="#contact">CONTACT</a></li>
+                    <li><a href="#" class="cta-button">GET SUPPORT</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>About K'lal</h1>
+            <p>Building digital resilience for Jewish communities worldwide</p>
+        </div>
+    </section>
+
+    <section class="mission-section">
+        <div class="container">
+            <div class="mission-content">
+                <div class="mission-text">
+                    <h2>Our Mission & Vision</h2>
+                    <p>K'lal envisions a more digitally literate and resilient Jewish community. We believe that secure and prosperous communal life is directly tied to how the people in that community understand and engage with digital tools (Internet, computers, etc.) and services (email managers, CRMs, etc).</p>
+                    
+                    <p>We conduct in-depth research through surveys, guided conversations, and engagements with Jewish community actors around the world to inform our systems-level approach to delivering tailored resources to support the operational, social, and communal needs of different institutions.</p>
+                    
+                    <p><strong>Why K'lal?</strong> K'lal Yisrael (כלל ישראל) refers to unity and mutual responsibility among the Jewish people. It emphasizes the shared heritage, history, and destiny of Jews around the world. These values guide our approach to digital literacy and resilience. It is a collective effort. Only by knowing the technologies we use and our perceptions of technology as a community, can we strengthen our resilience against digital threats, ensuring technology is an enabler of communal life.</p>
+                </div>
+                <div class="mission-image">
+                    <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="50" y="50" width="400" height="300" fill="#e1f0ff" />
+                        <circle cx="250" cy="200" r="80" fill="#0062d4" opacity="0.1" />
+                        <path d="M150 200 L350 200" stroke="#0062d4" stroke-width="4" stroke-dasharray="10,5" fill="none" />
+                        <path d="M250 100 L250 300" stroke="#0062d4" stroke-width="4" stroke-dasharray="10,5" fill="none" />
+                        <circle cx="250" cy="200" r="40" fill="#e88f01" opacity="0.5" />
+                        <path d="M170 200 C 170 150, 330 150, 330 200 C 330 250, 170 250, 170 200" fill="none" stroke="#0062d4" stroke-width="3" />
+                        <circle cx="200" cy="180" r="5" fill="#0062d4" />
+                        <circle cx="300" cy="180" r="5" fill="#0062d4" />
+                        <path d="M220 210 C 240 230, 260 230, 280 210" fill="none" stroke="#0062d4" stroke-width="3" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="values-section">
+        <div class="container">
+            <h2 class="section-title">Our Core Values</h2>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="30" cy="30" r="28" fill="none" stroke="#0062d4" stroke-width="2" />
+                            <path d="M20 30 C 20 20, 40 20, 40 30 C 40 40, 20 40, 20 30" fill="#e88f01" opacity="0.5" />
+                            <path d="M22 25 L15 20 M38 25 L45 20 M22 35 L15 40 M38 35 L45 40" stroke="#0062d4" stroke-width="2" />
+                        </svg>
+                    </div>
+                    <h3>Community</h3>
+                    <p>We believe that the strength of the Jewish community lies in our collective knowledge, action, and care for one another.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="10" y="20" width="40" height="30" rx="2" fill="none" stroke="#0062d4" stroke-width="2" />
+                            <path d="M20 20 L20 15 L40 15 L40 20" stroke="#0062d4" stroke-width="2" />
+                            <rect x="25" y="30" width="10" height="15" fill="#e88f01" opacity="0.5" />
+                            <path d="M30 10 L30 15" stroke="#0062d4" stroke-width="2" />
+                        </svg>
+                    </div>
+                    <h3>Security</h3>
+                    <p>We prioritize protecting the Jewish community against digital threats while maintaining the openness and connectivity that technology enables.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 40 L30 20 L45 40" fill="none" stroke="#0062d4" stroke-width="2" />
+                            <path d="M20 40 L30 25 L40 40" fill="#e88f01" opacity="0.5" />
+                            <circle cx="30" cy="20" r="5" fill="none" stroke="#0062d4" stroke-width="2" />
+                            <path d="M15 45 L45 45" stroke="#0062d4" stroke-width="2" />
+                        </svg>
+                    </div>
+                    <h3>Education</h3>
+                    <p>We believe in the transformative power of knowledge and continuously work to enhance digital literacy across Jewish communities.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 35 C 20 20, 40 20, 40 35" fill="none" stroke="#0062d4" stroke-width="2" />
+                            <circle cx="20" cy="35" r="5" fill="#e88f01" opacity="0.5" />
+                            <circle cx="40" cy="35" r="5" fill="#e88f01" opacity="0.5" />
+                            <path d="M15 42 L45 42" stroke="#0062d4" stroke-width="2" />
+                            <path d="M20 42 L20 48 M40 42 L40 48" stroke="#0062d4" stroke-width="2" />
+                        </svg>
+                    </div>
+                    <h3>Innovation</h3>
+                    <p>We embrace technological advancements while ensuring they align with and enhance Jewish communal values and practices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <div class="container">
+            <h2 class="section-title">Leadership Team</h2>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="levy.png" alt="Josh Levy"">
+                    </div>
+                    <div class="team-info">
+                        <h3>Josh Levy</h3>
+                        <div class="team-role">Co-Founder</div>
+                        <p class="team-bio">Josh has worked at the intersection of technology, cybersecurity, and incident response for decades, building innovative initiatives to increase digital literacy and security for national and global organizations.</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="nurko.png">
+                    </div>
+                    <div class="team-info">
+                        <h3>Galia Nurko</h3>
+                        <div class="team-role">Co-Founder</div>
+                        <p class="team-bio">Galia brings extensive experience in sustainable development and Jewish communal life, having promoted the potential of new technologies to keep communities connected and protected against digital harm.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Join Our Mission</h2>
+                <p>Want to learn more about K'lal's work or explore how we can support your organization's digital resilience? Get in touch with our team today.</p>
+                <a href="#" class="cta-button-white">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>K'lal</h3>
+                    <p>Digital literacy and resilience for Jewish communities worldwide.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">f</a>
+                        <a href="#" class="social-link">t</a>
+                        <a href="#" class="social-link">in</a>
+                    </div>
+                </div>
+                
+                <div class="footer-nav">
+                    <h4>Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="/index.html">Home</a></li>
+                        <li><a href="/about.html">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-nav">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Research Reports</a></li>
+                        <li><a href="#">Security Guides</a></li>
+                        <li><a href="#">Training Materials</a></li>
+                        <li><a href="#">Newsletter</a></li>
+                    </ul>
