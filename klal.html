@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K'lal - Digital Resilience for Jewish Communities</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue: #0062d4;
+            --orange-yellow: #e88f01;
+            --light-blue: #e1f0ff;
+            --light-gray: #f7f7f7;
+            --medium-gray: #e0e0e0;
+            --dark-gray: #333333;
+            --white: #ffffff;
+            --black: #000000;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Rubik', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--white);
+            border-bottom: 1px solid var(--medium-gray);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo svg {
+            height: 60px;
+            width: auto;
+        }
+        
+        .logo-text {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-left: 15px;
+            color: var(--black);
+        }
+        
+        .menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .menu li {
+            margin-left: 40px;
+        }
+        
+        .menu a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s;
+        }
+        
+        .menu a:hover {
+            color: var(--blue);
+        }
+        
+        .cta-button {
+            background-color: var(--blue);
+            color: white !important;
+            padding: 10px 20px;
+            border-radius: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--orange-yellow);
+        }
+        
+        .hero {
+            padding: 180px 0 100px;
+            background-color: var(--white);
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            color: var(--black);
+        }
+        
+        .hero-text h1 span {
+            color: var(--blue);
+        }
+        
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: var(--dark-gray);
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .primary-button {
+            display: inline-block;
+            background-color: var(--blue);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s;
+        }
+        
+        .primary-button:hover {
+            background-color: var(--orange-yellow);
+        }
+        
+        .secondary-button {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--blue);
+            padding: 12px 30px;
+            text-decoration: none;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid var(--blue);
+            transition: all 0.3s;
+        }
+        
+        .secondary-button:hover {
+            background-color: var(--blue);
+            color: white;
+        }
+        
+        .hero-image {
+            position: relative;
+        }
+        
+        .hero-image svg {
+            width: 100%;
+            height: auto;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--black);
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 60px;
+            max-width: 700px;
+        }
+        
+        .card-section {
+            padding: 100px 0;
+            background-color: var(--light-gray);
+        }
+        
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .card {
+            background-color: var(--white);
+            border: none;
+            padding: 40px;
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .card-icon {
+            margin-bottom: 20px;
+        }
+        
+        .card-icon svg {
+            width: 60px;
+            height: 60px;
+        }
+        
+        .card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--black);
+        }
+        
+        .card p {
+            margin-bottom: 20px;
+        }
+        
+        .card-link {
+            display: inline-block;
+            color: var(--blue);
+            font-weight: 500;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 2px;
+            transition: border-color 0.3s;
+        }
+        
+        .card-link:hover {
+            border-color: var(--blue);
+        }
+        
+        .featured-section {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+        
+        .featured-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .featured-text h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: var(--black);
+        }
+        
+        .featured-text p {
+            margin-bottom: 30px;
+        }
+        
+        .featured-points {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .featured-points li {
+            margin-bottom: 25px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .featured-points li::before {
+            content: "";
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: var(--orange-yellow);
+            margin-right: 15px;
+            margin-top: 10px;
+            flex-shrink: 0;
+        }
+        
+        .featured-points li strong {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .featured-points li p {
+            margin: 0;
+        }
+        
+        .resources-section {
+            padding: 100px 0;
+            background-color: var(--light-gray);
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .resource-card {
+            position: relative;
+            background-color: var(--white);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .resource-tag {
+            display: inline-block;
+            background-color: var(--light-blue);
+            color: var(--blue);
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+        }
+        
+        .resource-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--black);
+        }
+        
+        .resource-card p {
+            margin-bottom: 30px;
+            flex-grow: 1;
+        }
+        
+        .cta-section {
+            padding: 80px 0;
+            background-color: var(--blue);
+            color: var(--white);
+        }
+        
+        .cta-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .cta-content h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .cta-content p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        
+        .cta-button-white {
+            display: inline-block;
+            background-color: var(--white);
+            color: var(--blue);
+            padding: 12px 30px;
+            text-decoration: none;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+        
+        .cta-button-white:hover {
+            background-color: var(--orange-yellow);
+            color: var(--white);
+        }
+        
+        footer {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 80px 0 40px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-info h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .footer-info p {
+            margin-bottom: 20px;
+            color: var(--medium-gray);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--medium-gray);
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-link:hover {
+            background-color: var(--blue);
+            border-color: var(--blue);
+        }
+        
+        .footer-nav h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: var(--medium-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--blue);
+        }
+        
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            text-align: center;
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+        }
+        
+        .mobile-menu-button {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--dark-gray);
+        }
+        
+        @media (max-width: 992px) {
+            .hero-content, .featured-content, .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-image {
+                order: -1;
+            }
+            
+            .featured-image img {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-button {
+                display: block;
+            }
+            
+            .menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                flex-direction: column;
+            }
+            
+            .menu.active {
+                display: flex;
+            }
+            
+            .menu li {
+                margin: 15px 0;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .card-grid, .resources-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <svg width="60" height="60" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M500 100 L300 500 L100 800 L400 650 L500 900 L600 650 L900 800 L700 500 L500 100 Z" fill="#0062d4" />
+                        <path d="M500 100 L700 500 L900 800 L600 650 L500 900 L400 650 L100 800 L300 500 L500 100 Z" fill="#e88f01" />
+                    </svg>
+                    <span class="logo-text">K'lal</span>
+                </div>
+                <button class="mobile-menu-button">☰</button>
+                <ul class="menu">
+                    <li><a href="#about">ABOUT</a></li>
+                    <li><a href="#services">SERVICES</a></li>
+                    <li><a href="#resources">RESOURCES</a></li>
+                    <li><a href="#contact">CONTACT</a></li>
+                    <li><a href="#" class="cta-button">GET SUPPORT</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Digital <span>Resilience</span> for Jewish Communities</h1>
+                    <p>K'lal envisions a more digitally literate and resilient Jewish community. We believe that secure and prosperous communal life is directly tied to how the people in that community understand and engage with digital tools.</p>
+                    <div class="hero-buttons">
+                        <a href="#services" class="primary-button">Our Services</a>
+                        <a href="#about" class="secondary-button">Learn More</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="100" y="50" width="400" height="300" fill="#e1f0ff" />
+                        <circle cx="300" cy="200" r="100" fill="#0062d4" opacity="0.1" />
+                        <path d="M200 200 L270 150 L340 200 L410 150" stroke="#0062d4" stroke-width="4" fill="none" />
+                        <path d="M200 220 L270 170 L340 220 L410 170" stroke="#0062d4" stroke-width="4" fill="none" />
+                        <path d="M200 240 L270 190 L340 240 L410 190" stroke="#0062d4" stroke-width="4" fill="none" />
+                        <circle cx="200" cy="150" r="20" fill="#e88f01" />
+                        <circle cx="400" cy="250" r="20" fill="#e88f01" />
+                        <rect x="170" y="80" width="30" height="30" fill="#0062d4" />
+                        <rect x="400" y="80" width="30" height="30" fill="#0062d4" />
+                        <rect x="170" y="290" width="30" height="30" fill="#0062d4" />
+                        <rect x="400" y="290" width="30" height="30" fill="#0062d4" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="card-section">
+        <div class="container">
+            <h2 class="section-title">Why K'lal?</h2>
+            <p class="section-subtitle">K'lal Yisrael (כלל ישראל) refers to unity and mutual responsibility among the Jewish people. These values guide our approach to digital literacy and resilience.</p>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">
+                        <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="30" cy="30" r="25" fill="none" stroke="#0062d4" stroke-width="2" />
+                            <circle cx="30" cy="20" r="8" fill="#e88f01" />
+                            <path d="M15 45 C15 35 45 35 45 45" fill="none" stroke="#0062d4" stroke-width="2" />
+                        </svg>
+                    </div>
+                    <h3>Community First</h3>
+                    <p>We believe that secure and prosperous communal life is directly tied to how the people in that community understand and engage with digital tools and services.</p>
+                    <a href="#" class="card-link">Learn More</a>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">
+                        <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="10" y="15" width="40" height="30" rx="2" fill="none" stroke="#0062d4" stroke-width="2" />
+                            <rect x="20" y="10" width="20" height="10" rx="1" fill="#e88f01" />
+                            <line x1="30" y1="30" x2="40" y2="30" stroke="#0062d4" stroke-width="2" />
+                            <line x1="20" y1="30" x2="25" y2="30" stroke="#0062d4" stroke-width="2" />
+                            <line x1="30" y1="35" x2="35" y2="35" stroke="#0062d4" stroke-width="2" />
+                            <line x1="20" y1="35" x2="25" y2="35" stroke="#0062d4" stroke-width="2" />
+                        </svg>
+                    </div>
+                    <h3>Research-Driven</h3>
+                    <p>We conduct in-depth research through surveys, guided conversations, and engagements with Jewish community actors around the world.</p>
+                    <a href="#" class="card-link">Learn More</a>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">
+                        <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 45 L20 15 L40 15 L40 45 Z" fill="none" stroke="#0062d4" stroke-width="2" />
+                            <path d="M25 25 L35 25 M25 30 L35 30 M25 35 L30 35" stroke="#0062d4" stroke-width="2" />
+                            <circle cx="20" cy="15" r="5" fill="#e88f01" />
+                            <circle cx="40" cy="15" r="5" fill="#e88f01" />
+                            <circle cx="20" cy="45" r="5" fill="#e88f01" />
+                            <circle cx="40" cy="45" r="5" fill="#e88f01" />
+                        </svg>
+                    </div>
+                    <h3>Digital Security</h3>
+                    <p>We help Jewish organizations strengthen their resilience against digital threats, ensuring technology remains an enabler of communal life.</p>
+                    <a href="#" class="card-link">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="featured-section">
+        <div class="container">
+            <div class="featured-content">
+                <div class="featured-text">
+                    <h2>Our Services</h2>
+                    <p>We provide tailored support to strengthen the digital resilience of Jewish organizations and communities.</p>
+                    
+                    <ul class="featured-points">
+                        <li>
+                            <div>
+                                <strong>Strategic Consulting</strong>
+                                <p>We provide strategic consulting on technology planning, digital security, and resilience for local and national organizations.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <strong>Technology Assessment</strong>
+                                <p>We conduct technology assessments and deliver customized trainings to strengthen institutional resilience.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <strong>Curriculum Development</strong>
+                                <p>We develop curricula and learning tracks for Jewish tech and security professionals and decision-makers.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <strong>Knowledge Repository</strong>
+                                <p>We create a central repository of knowledge on technology use, best practices, and security considerations tailored to Jewish communal needs.</p>
+                            </div>
+                        </li>
+                    </ul>
+                    
+                    <a href="#" class="primary-button">Contact Us</a>
+                </div>
+                <div class="featured-image">
+                    <svg width="500" height="400" viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="50" y="50" width="400" height="300" fill="#e1f0ff" />
+                        
+                        <!-- Strategic Consulting Icon -->
+                        <circle cx="150" cy="150" r="50" fill="#ffffff" />
+                        <circle cx="150" cy="150" r="40" fill="none" stroke="#0062d4" stroke-width="3" />
+                        <path d="M130 150 L145 165 L170 140" stroke="#e88f01" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                        
+                        <!-- Technology Assessment Icon -->
+                        <circle cx="350" cy="150" r="50" fill="#ffffff" />
+                        <rect x="325" y="120" width="50" height="35" rx="3" fill="none" stroke="#0062d4" stroke-width="3" />
+                        <line x1="325" y1="135" x2="375" y2="135" stroke="#0062d4" stroke-width="2" />
+                        <path d="M335 170 L325 190 L375 190 L365 170" fill="none" stroke="#0062d4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                        <rect x="335" y="155" width="30" height="15" rx="2" fill="#e88f01" />
+                        
+                        <!-- Curriculum Development Icon -->
+                        <circle cx="150" cy="280" r="50" fill="#ffffff" />
+                        <path d="M130 240 L130 300 L170 300 L170 240 Z" fill="none" stroke="#0062d4" stroke-width="3" />
+                        <path d="M135 260 L165 260 M135 270 L165 270 M135 280 L155 280" stroke="#0062d4" stroke-width="2" stroke-linecap="round" />
+                        <path d="M125 245 L125 305 L165 305" fill="none" stroke="#e88f01" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                        
+                        <!-- Knowledge Repository Icon -->
+                        <circle cx="350" cy="280" r="50" fill="#ffffff" />
+                        <path d="M325 255 L325 305 L375 305 L375 255 Z" fill="none" stroke="#0062d4" stroke-width="3" />
+                        <path d="M325 255 L325 265 L375 265 L375 255 Z" fill="#0062d4" />
+                        <path d="M330 275 L370 275 M330 285 L370 285 M330 295 L350 295" stroke="#0062d4" stroke-width="2" stroke-linecap="round" />
+                        <path d="M320 260 L320 310 L370 310" fill="none" stroke="#e88f01" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="resources" class="resources-section">
+        <div class="container">
+            <h2 class="section-title">Resources & Knowledge Hub</h2>
+            <p class="section-subtitle">Access our growing repository of digital literacy and security resources tailored for Jewish organizations.</p>
+            
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <span class="resource-tag">Guide</span>
+                    <h3>Cybersecurity Assessment Framework</h3>
+                    <p>A comprehensive guide to evaluating and improving your organization's digital security posture.</p>
+                    <a href="#" class="primary-button">Download</a>
+                </div>
+                
+                <div class="resource-card">
+                    <span class="resource-tag">Report</span>
+                    <h3>State of Technology in Jewish Organizations</h3>
+                    <p>Our annual report on how Jewish institutions use and think about technology.</p>
+                    <a href="#" class="primary-button">Read Report</a>
+                </div>
+                
+                <div class="resource-card">
+                    <span class="resource-tag">Training</span>
+                    <h3>Digital Literacy Curriculum for Jewish Educators</h3>
+                    <p>A specialized curriculum designed for Jewish schools and educational programs.</p>
+                    <a href="#" class="primary-button">Access Materials</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Get in Touch</h2>
+                <p>Interested in our services or want to learn more about how K'lal can help your organization? Reach out to us today.</p>
+                <a href="#" class="cta-button-white">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>K'lal</h3>
+                    <p>Digital literacy and resilience for Jewish communities worldwide.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">f</a>
+                        <a href="#" class="social-link">t</a>
+                        <a href="#" class="social-link">in</a>
+                    </div>
+                </div>
+                
+                <div class="footer-nav">
+                    <h4>Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-nav">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Research Reports</a></li>
+                        <li><a href="#">Security Guides</a></li>
+                        <li><a href="#">Training Materials</a></li>
+                        <li><a href="#">Newsletter</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-nav">
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li>info@klal.tech</li
